@@ -1,18 +1,19 @@
 from ting_file_management.abstract_queue import AbstractQueue
+from .linked_list import DoublyLinkedList
 
 
 class Queue(AbstractQueue):
     def __init__(self):
-        """Inicialize sua estrutura aqui"""
+        self._lista = DoublyLinkedList()
 
     def __len__(self):
-        """Aqui irá sua implementação"""
+        return self._lista._length
 
     def enqueue(self, value):
-        """Aqui irá sua implementação"""
+        self._lista.add_last(value)
 
     def dequeue(self):
-        """Aqui irá sua implementação"""
+        return self._lista.remove_first()
 
     def search(self, index):
-        """Aqui irá sua implementação"""
+        return self._lista.get(index)
