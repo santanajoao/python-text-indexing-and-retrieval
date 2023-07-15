@@ -60,11 +60,8 @@ class DoublyLinkedList:
         return pointer.value
 
     def find(self, value, *, key: Callable = None):
-        pointer = DoublyLinkedNode(None, next=self.head)
-        while pointer.next:
-            pointer = pointer.next
-
-            _value = key(pointer.value) if key else pointer.value
+        for pointer_value in self:
+            _value = key(pointer_value) if key else pointer_value
             if _value == value:
-                return pointer.value
+                return pointer_value
         return None
