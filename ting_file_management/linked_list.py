@@ -36,7 +36,9 @@ class DoublyLinkedList:
         removed_value = self.head.value
 
         self.head = self.head.next
-        self.head.prev = None
+        if self.head:
+            self.head.prev = None
+
         self._length -= 1
 
         return removed_value
