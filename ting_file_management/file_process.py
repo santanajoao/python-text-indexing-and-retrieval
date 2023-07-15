@@ -14,7 +14,7 @@ def get_file_lines(
         return None
 
     file_lines = txt_importer(path_file)
-    if file_lines is None:
+    if len(file_lines) == 0:
         return None
 
     return file_lines
