@@ -1,3 +1,4 @@
+from typing import Any, Callable
 from .node import DoublyLinkedNode
 
 
@@ -40,7 +41,7 @@ class DoublyLinkedList:
 
         return removed_value
 
-    def get(self, index: int):
+    def get(self, index: int) -> Any:
         if index < 0 or index >= self._length:
             raise IndexError("Índice Inválido ou Inexistente")
 
@@ -49,3 +50,11 @@ class DoublyLinkedList:
             pointer = pointer.next
 
         return pointer.value
+
+    def find(self, value, *, key: Callable):
+        pointer = DoublyLinkedNode(None, None, self.head)
+        while pointer.next:
+            pointer = pointer.next
+            if key(pointer.value) == value:
+                return pointer.value
+        return None
