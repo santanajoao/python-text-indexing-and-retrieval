@@ -10,6 +10,9 @@ class Queue(AbstractQueue):
     def __len__(self):
         return self._lista._length
 
+    def __iter__(self):
+        return iter(self._lista)
+
     def enqueue(self, value) -> None:
         self._lista.add_last(value)
 

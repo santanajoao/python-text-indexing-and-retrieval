@@ -1,4 +1,4 @@
-from typing import Any, Callable
+from typing import Any, Callable, Generator
 from .node import DoublyLinkedNode
 
 
@@ -13,6 +13,12 @@ class DoublyLinkedList:
 
     def __repr__(self) -> str:
         return f"(len={self._length}, head={self.head}, tail={self.tail})"
+
+    def __iter__(self) -> Generator[Any, None, None]:
+        pointer = DoublyLinkedNode(None, next=self.head)
+        while pointer.next:
+            pointer = pointer.next
+            yield pointer.value
 
     def add_last(self, value) -> None:
         node = DoublyLinkedNode(value)
@@ -54,7 +60,7 @@ class DoublyLinkedList:
         return pointer.value
 
     def find(self, value, *, key: Callable = None):
-        pointer = DoublyLinkedNode(None, None, self.head)
+        pointer = DoublyLinkedNode(None, next=self.head)
         while pointer.next:
             pointer = pointer.next
 
