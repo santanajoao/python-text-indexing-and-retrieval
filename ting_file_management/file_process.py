@@ -1,14 +1,17 @@
 import sys
+from types import Any
 from ting_file_management.file_management import txt_importer
 from ting_file_management.queue import Queue
 
 
-def get_name_from_file(file: dict[str]) -> str:
-    return file["nome_do_arquivo"]
+def get_name_from_file(file_data: dict[str, Any]) -> str:
+    return file_data["nome_do_arquivo"]
 
 
 def get_file_lines(
-        path_file: str, file_processes: Queue) -> None | list[str]:
+    path_file: str,
+    file_processes: Queue[dict[str, Any]]
+) -> None | list[str]:
     file_data = file_processes.find(path_file, key=get_name_from_file)
     if file_data is not None:
         return []
@@ -17,7 +20,7 @@ def get_file_lines(
     return file_lines
 
 
-def process(path_file: str, file_processes: Queue) -> None:
+def process(path_file: str, file_processes: Queue[dict[str, Any]]) -> None:
     file_lines = get_file_lines(path_file, file_processes)
     if len(file_lines) == 0:
         return None
@@ -32,17 +35,18 @@ def process(path_file: str, file_processes: Queue) -> None:
     print(file_data)
 
 
-def remove(file_processes: Queue) -> None:
+def remove(file_processes: Queue[dict[str, Any]]) -> None:
     try:
-        file_data: dict[str] = file_processes.dequeue()
+        file_data = file_processes.dequeue()
         print(f"Arquivo {file_data['nome_do_arquivo']} removido com sucesso")
     except IndexError:
         print("Não há elementos")
 
 
-def file_metadata(file_processes: Queue, position: int) -> None:
+def file_metadata(
+        file_processes: Queue[dict[str, Any]], position: int) -> None:
     try:
-        file_data: dict[str] = file_processes.search(position)
+        file_data = file_processes.search(position)
         print(file_data)
     except IndexError:
         print("Posição inválida", file=sys.stderr)

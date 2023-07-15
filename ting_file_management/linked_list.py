@@ -1,8 +1,10 @@
-from typing import Any, Callable, Generator
+from typing import Callable, Generator, Generic, TypeVar
 from ting_file_management.node import DoublyLinkedNode
 
+T = TypeVar('T')
 
-class DoublyLinkedList:
+
+class DoublyLinkedList(Generic[T]):
     def __init__(self) -> None:
         self.head = None
         self.tail = None
@@ -14,13 +16,13 @@ class DoublyLinkedList:
     def __repr__(self) -> str:
         return f"(len={self._length}, head={self.head}, tail={self.tail})"
 
-    def __iter__(self) -> Generator[Any, None, None]:
+    def __iter__(self) -> Generator[T, None, None]:
         pointer = DoublyLinkedNode(None, next=self.head)
         while pointer.next:
             pointer = pointer.next
             yield pointer.value
 
-    def add_last(self, value) -> None:
+    def add_last(self, value: T) -> None:
         node = DoublyLinkedNode(value)
 
         if self.head is None and self.tail is None:
@@ -32,7 +34,7 @@ class DoublyLinkedList:
 
         self._length += 1
 
-    def remove_first(self):
+    def remove_first(self) -> T:
         if self.head is None:
             raise IndexError("Não é possível remover de uma sequência vazia")
 
@@ -49,7 +51,7 @@ class DoublyLinkedList:
 
         return removed_value
 
-    def get(self, index: int) -> Any:
+    def get(self, index: int) -> T:
         if index < 0 or index >= self._length:
             raise IndexError("Índice Inválido ou Inexistente")
 
@@ -59,7 +61,7 @@ class DoublyLinkedList:
 
         return pointer.value
 
-    def find(self, value, *, key: Callable = None):
+    def find(self, value: T, *, key: Callable | None = None) -> T | None:
         for pointer_value in self:
             _value = key(pointer_value) if key else pointer_value
             if _value == value:
