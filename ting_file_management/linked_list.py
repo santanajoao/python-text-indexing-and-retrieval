@@ -1,5 +1,5 @@
 from typing import Any, Callable, Generator
-from .node import DoublyLinkedNode
+from ting_file_management.node import DoublyLinkedNode
 
 
 class DoublyLinkedList:

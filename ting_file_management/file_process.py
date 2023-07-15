@@ -1,6 +1,6 @@
 import sys
-from .file_management import txt_importer
-from .queue import Queue
+from ting_file_management.file_management import txt_importer
+from ting_file_management.queue import Queue
 
 
 def get_name_from_process(process: dict[str]) -> str:

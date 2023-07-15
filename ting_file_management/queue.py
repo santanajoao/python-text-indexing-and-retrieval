@@ -1,6 +1,6 @@
 from typing import Any, Callable
 from ting_file_management.abstract_queue import AbstractQueue
-from .linked_list import DoublyLinkedList
+from ting_file_management.linked_list import DoublyLinkedList
 
 
 class Queue(AbstractQueue):
