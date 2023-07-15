@@ -1,3 +1,4 @@
+import sys
 from .file_management import txt_importer
 from .queue import Queue
 
@@ -42,5 +43,9 @@ def remove(instance: Queue):
         print("Não há elementos")
 
 
-def file_metadata(instance, position):
-    """Aqui irá sua implementação"""
+def file_metadata(instance: Queue, position: int):
+    try:
+        file_data: dict[str] = instance.search(position)
+        print(file_data)
+    except IndexError:
+        print("Posição inválida", file=sys.stderr)
