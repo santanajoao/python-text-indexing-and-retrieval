@@ -1,5 +1,5 @@
 import sys
-from types import Any
+from typing import Any
 from ting_file_management.file_management import txt_importer
 from ting_file_management.queue import Queue
 

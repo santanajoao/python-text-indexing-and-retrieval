@@ -1,4 +1,4 @@
-from typing import Callable, Generator, Generic, TypeVar
+from typing import Callable, Generator, Generic, TypeVar, Optional
 from ting_file_management.node import DoublyLinkedNode
 
 T = TypeVar('T')
@@ -6,8 +6,8 @@ T = TypeVar('T')
 
 class DoublyLinkedList(Generic[T]):
     def __init__(self) -> None:
-        self.head = None
-        self.tail = None
+        self.head: Optional[DoublyLinkedNode[T]] = None
+        self.tail: Optional[DoublyLinkedNode[T]] = None
         self._length = 0
 
     def __len__(self) -> int:
@@ -23,7 +23,7 @@ class DoublyLinkedList(Generic[T]):
             yield pointer.value
 
     def add_last(self, value: T) -> None:
-        node = DoublyLinkedNode(value)
+        node = DoublyLinkedNode[T](value)
 
         if self.head is None and self.tail is None:
             self.head = self.tail = node
