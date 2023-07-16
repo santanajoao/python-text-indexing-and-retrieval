@@ -4,9 +4,7 @@ Um programa que simula um algoritmo simples de indexação de documentos de text
 
 ## Sobre
 
-Desenvolvido com objetivo de praticar conhecimentos de estruturas de dados, o programa foi desenvolvido utilizando uma Fila para gerenciar os arquivos de texto, que por sua vez foi implementada utilizando uma Lista Duplamente Encadeada por composição.
-
-Arquivos de texto podem ser lidos e suas informações adicionadas ou removidas da fila, onde é possível buscar por um termo em todos os arquivos indexados.
+Desenvolvido com objetivo de praticar conhecimentos de estruturas de dados, o programa foi desenvolvido utilizando uma Fila para gerenciar os arquivos de texto, que por sua vez foi implementada utilizando uma Lista Duplamente Encadeada por composição. Permite anexar arquivos de texto e realizar buscas por termos nos arquivos.
 
 ## Tecnologias e conhecimentos chave
 
