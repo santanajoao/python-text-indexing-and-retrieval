@@ -15,4 +15,4 @@ Desenvolvido com objetivo de praticar conhecimentos de estruturas de dados, o pr
 - Leitura de arquivos
 - Dunder méthods (`__iter__`, `__len__`, `__repr__`)
 - Geradores, iteradores, `yield`
-- Testes com pytest
+- Testes com `pytest`
