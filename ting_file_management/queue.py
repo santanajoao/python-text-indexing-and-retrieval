@@ -24,5 +24,5 @@ class Queue(AbstractQueue, Generic[T]):
     def search(self, index: int) -> T:
         return self._lista.get(index)
 
-    def find(self, value: T, *, key: Callable | None = None) -> T | None:
-        return self._lista.find(value, key=key)
+    def some(self, value: T, *, key: Callable | None = None) -> bool:
+        return self._lista.some(value, key=key)

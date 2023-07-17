@@ -61,9 +61,9 @@ class DoublyLinkedList(Generic[T]):
 
         return pointer.value
 
-    def find(self, value: T, *, key: Callable | None = None) -> T | None:
+    def some(self, value: T, *, key: Callable | None = None) -> bool:
         for pointer_value in self:
             _value = key(pointer_value) if key else pointer_value
             if _value == value:
-                return pointer_value
-        return None
+                return True
+        return False

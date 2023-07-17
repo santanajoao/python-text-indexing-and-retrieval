@@ -12,8 +12,8 @@ def get_file_lines(
     path_file: str,
     file_queue: Queue[dict[str, Any]]
 ) -> None | list[str]:
-    file_data = file_queue.find(path_file, key=get_name_from_file)
-    if file_data is not None:
+    repeated = file_queue.some(path_file, key=get_name_from_file)
+    if repeated is True:
         return []
 
     file_lines = txt_importer(path_file)
